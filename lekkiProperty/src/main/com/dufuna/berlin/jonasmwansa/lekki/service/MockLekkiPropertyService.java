@@ -1,24 +1,25 @@
 package com.dufuna.berlin.jonasmwansa.lekki.service;
 
 import com.dufuna.berlin.jonasmwansa.lekki.model.LekkiProperty;
-import java.util.ArrayList;
+import com.dufuna.berlin.jonasmwansa.lekki.repository.SimpleLekkiPropertyRepository;
+import com.dufuna.berlin.jonasmwansa.lekki.repository.SimpleLekkiPropertyRepositoryImpl;
+
+import java.util.List;
 
 public class MockLekkiPropertyService implements LekkiPropertyService{
-    ArrayList<LekkiProperty> properties = new ArrayList<>();
+    SimpleLekkiPropertyRepository storage = new SimpleLekkiPropertyRepositoryImpl();
     @Override
-    public void saveProperty(LekkiProperty property)
-    {
-        properties.add(property);
+    public LekkiProperty saveProperty(LekkiProperty property) {
+        return storage.save(property);
     }
 
     @Override
     public LekkiProperty getProperty(int id) {
-        if(properties.contains(id)){
-            return properties.get(id);
-        }
-        else
-            return null;
-
+        return storage.findById(id);
     }
 
+    @Override
+    public List<LekkiProperty> getProperties() {
+        return (List<LekkiProperty>) storage.findAll();
+    }
 }

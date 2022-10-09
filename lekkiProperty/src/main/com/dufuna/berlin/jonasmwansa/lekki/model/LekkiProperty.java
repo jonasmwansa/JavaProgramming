@@ -1,6 +1,5 @@
 package com.dufuna.berlin.jonasmwansa.lekki.model;
 
-import com.dufuna.berlin.jonasmwansa.lekki.enums.propertyType;
 import java.util.Date;
 
 public class LekkiProperty {
@@ -8,7 +7,7 @@ public class LekkiProperty {
     //fields
     private int id;
     private String address;
-    private propertyType type;
+    private String type;
     private int numberOfBedrooms;
     private int numberOfSittingRooms;
     private int numberOfKitchens;
@@ -20,7 +19,10 @@ public class LekkiProperty {
     private Date validTo;
 
     //methods
-    public LekkiProperty() {
+    public LekkiProperty(int id, String address, String type) {
+        this.id =id;
+        this.address = address;
+        this.type = type;
     }
 
     public int getId() {
@@ -39,11 +41,11 @@ public class LekkiProperty {
         this.address = address;
     }
 
-    public propertyType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(propertyType type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -121,7 +123,7 @@ public class LekkiProperty {
 
     @Override
     public String toString(){
-        return id + ", "+ address + ", " + type +"\n";
+        return id + ", Adddress: "+ address + ", Property Type: " + type +"\n";
     }
 
     @Override
